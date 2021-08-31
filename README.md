@@ -1,6 +1,6 @@
 # cs4750
 
-CS4750 Flutter Mobile Development class Fall 2021
+CS4750 Flutter Mobile Development class Fall 2021.
 
 ## Getting Started
 
