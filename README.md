@@ -1,6 +1,6 @@
 # cs4750
 
-A new Flutter application.
+CS4750 Flutter Mobile Development class Fall 2021
 
 ## Getting Started
 
