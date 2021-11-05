@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="cs4750.cs4750">
    <application
-        android:label="cs4750"
+        android:label="TMA"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
