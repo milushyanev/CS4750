@@ -24,7 +24,16 @@ class SplashPage extends StatelessWidget{
     
     return Scaffold(
       body: Container(
-        color: Colors.lightBlue.withOpacity(.7),
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/keys.jpeg"),
+            fit: BoxFit.cover,
+            colorFilter:
+              ColorFilter.mode(Colors.black.withOpacity(.1),
+                  BlendMode.dstATop)
+          )
+        ),
+        //color: Colors.white.withOpacity(.7),
         alignment: Alignment.center,
         child: Image(
           image: AssetImage("assets/images/logo.png"),
