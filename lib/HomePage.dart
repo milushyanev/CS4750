@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -5,30 +6,315 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
+
 class _HomePageState extends State<HomePage> {
+
+  double loanAmount =100000;
+  double interestRate =2.0;
+  double monthlyIncome =1000;
+  double expenses = 0;
+
+  loanCalculation(){
+    setState(() {
+
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return new Scaffold(
       appBar: AppBar(
-        title: Text('Home Page'),
-      ),
-      body: Center(
-        child: Container(
-          height: 80,
-          width: 150,
-          decoration: BoxDecoration(
-              color: Colors.blue, borderRadius: BorderRadius.circular(10)),
-          child: FlatButton(
+          leading: IconButton(
             onPressed: () {
               Navigator.pop(context);
             },
-            child: Text(
-              'Welcome',
-              style: TextStyle(color: Colors.white, fontSize: 25),
+            icon: Icon(Icons.home_outlined),
+          ),
+       title: ImageIcon (
+        AssetImage('assets/images/logo.png'),
+         size: 100,
+       ),
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
+
+      ),
+      extendBodyBehindAppBar: true,
+      body: new Stack(
+        fit: StackFit.expand,
+        children: <Widget>[
+
+          Container(
+            color: Colors.black,
+            child: Stack(
+              children: [
+                Positioned.fill(
+                  child: Opacity(
+                    opacity: 0.2,
+                    child: Image.asset('assets/images/keys.jpeg',
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
-        ),
+          Expanded(
+            child:ListView(
+             children: <Widget>[
+               Padding(padding: EdgeInsets.all(30)),
+              Container(
+                margin: const EdgeInsets.only(left: 30.0, right: 30.0),
+                decoration: BoxDecoration(
+
+                    border: Border.all(width:1,color: Colors.white),
+                    borderRadius: const BorderRadius.all(const Radius.circular(8)),
+                    color: Colors.white.withOpacity(.3)
+                ),
+                child:Column(
+                  children: <Widget>[
+                    Slider(
+                        min:100000,
+                        max:1000000,
+                        divisions: 180,
+                        label: loanAmount.round().toString(),
+                        onChanged: (housePrice){
+                          setState((
+                              )  {
+                            loanAmount = housePrice;
+                          });
+                        },
+                        value: loanAmount ),
+                    Container(
+                     margin: const EdgeInsets.only(left: 10.0, right: 10.0),
+                     child: Padding(
+                       padding: const EdgeInsets.all(10.0),
+                       child: Row(
+                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                         children: <Widget>[
+
+                           Text('Home Value', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 18,
+                               shadows: [
+                                 Shadow(
+                                     color: Colors.blue,
+                                     offset: Offset(1, 2),
+                                     blurRadius: 1),
+                               ]),
+                           ),
+                           Text('\$ ${double.parse(loanAmount.toStringAsFixed(2))}', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 16,
+                               shadows: [
+                                 Shadow(
+                                     color: Colors.blue,
+                                     offset: Offset(2, 2),
+                                     blurRadius: 1),
+                               ]),
+                           )
+                         ],
+                       ),
+                     ),
+                    )
+                  ],
+
+                ),
+              ),
+               Padding(padding: EdgeInsets.all(20)),
+               Container(
+                 margin: const EdgeInsets.only(left: 30.0, right: 30.0),
+                 decoration: BoxDecoration(
+                     border: Border.all(width:1,color: Colors.white),
+                     borderRadius: const BorderRadius.all(const Radius.circular(8)),
+                     color: Colors.white.withOpacity(.3)
+                 ),
+                 child:Column(
+                   children: <Widget>[
+                     Slider(
+                         min:1000,
+                         max:15000,
+                         divisions: 140,
+                         label: monthlyIncome.round().toString(),
+                         onChanged: (monthlyEarnings){
+                           setState((
+                               )  {
+                             monthlyIncome = monthlyEarnings;
+                           });
+                         },
+                         value: monthlyIncome ),
+                     Container(
+                       margin: const EdgeInsets.only(left: 10.0, right: 10.0),
+                       child: Padding(
+                         padding: const EdgeInsets.all(10.0),
+                         child: Row(
+                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                           children: <Widget>[
+
+                             Text('Monthly Income', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 18,
+                                 shadows: [
+                                   Shadow(
+                                       color: Colors.blue,
+                                       offset: Offset(1, 2),
+                                       blurRadius: 1),
+                                 ]),
+                             ),
+                             Text('\$ ${double.parse(monthlyIncome.toStringAsFixed(2))}', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 16,
+                                 shadows: [
+                                   Shadow(
+                                       color: Colors.blue,
+                                       offset: Offset(2, 2),
+                                       blurRadius: 1),
+                                 ]),
+                             )
+                           ],
+                         ),
+                       ),
+                     )
+                   ],
+
+                 ),
+               ),
+               Padding(padding: EdgeInsets.all(20)),
+               Container(
+                 margin: const EdgeInsets.only(left: 30.0, right: 30.0),
+                 decoration: BoxDecoration(
+                     border: Border.all(width:1,color: Colors.white),
+                     borderRadius: const BorderRadius.all(const Radius.circular(8)),
+                     color: Colors.white.withOpacity(.3)
+                 ),
+                 child:Column(
+                   children: <Widget>[
+                     Slider(
+                         min:2,
+                         max:5,
+                         label: interestRate.round().toString(),
+                         onChanged: (loanAPR){
+                           setState((
+                               )  {
+                             interestRate = loanAPR;
+                           });
+                         },
+                         value: interestRate ),
+                     Container(
+                       margin: const EdgeInsets.only(left: 10.0, right: 10.0),
+                       child: Padding(
+                         padding: const EdgeInsets.all(10.0),
+                         child: Row(
+                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                           children: <Widget>[
+
+                             Text('Interest Rate', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 18,
+                                 shadows: [
+                                   Shadow(
+                                       color: Colors.blue,
+                                       offset: Offset(1, 2),
+                                       blurRadius: 1),
+                                 ]),
+                             ),
+                             Text('${double.parse(interestRate.toStringAsFixed(2))} %', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 16,
+                                 shadows: [
+                                   Shadow(
+                                       color: Colors.blue,
+                                       offset: Offset(2, 2),
+                                       blurRadius: 1),
+                                 ]),
+                             )
+                           ],
+                         ),
+                       ),
+                     )
+                   ],
+
+                 ),
+               ),
+               Padding(padding: EdgeInsets.all(20)),
+               Container(
+                 margin: const EdgeInsets.only(left: 30.0, right: 30.0),
+                 decoration: BoxDecoration(
+                     border: Border.all(width:1,color: Colors.white),
+                     borderRadius: const BorderRadius.all(const Radius.circular(8)),
+                     color: Colors.white.withOpacity(.3)
+                 ),
+                 child:Column(
+                   children: <Widget>[
+                     Slider(
+                         min:0,
+                         max:10000,
+                         divisions: 400,
+                         label: expenses.round().toString(),
+                         onChanged: (monthlyExpenses){
+                           setState((
+                               )  {
+                             expenses = monthlyExpenses;
+                           });
+                         },
+                         value: expenses ),
+                     Container(
+                       margin: const EdgeInsets.only(left: 10.0, right: 10.0),
+                       child: Padding(
+                         padding: const EdgeInsets.all(10.0),
+                         child: Row(
+                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                           children: <Widget>[
+
+                             Text('Monthly Expenses', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 18,
+                                 shadows: [
+                                   Shadow(
+                                       color: Colors.blue,
+                                       offset: Offset(1, 2),
+                                       blurRadius: 1),
+                                 ]),
+                             ),
+                             Text('\$ ${double.parse(expenses.toStringAsFixed(2))}', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 16,
+                                 shadows: [
+                                   Shadow(
+                                       color: Colors.blue,
+                                       offset: Offset(2, 2),
+                                       blurRadius: 1),
+                                 ]),
+                             )
+                           ],
+                         ),
+                       ),
+                     )
+                   ],
+
+                 ),
+               ),
+               Padding(padding: EdgeInsets.all(20)),
+               Container(
+                 margin: const EdgeInsets.only(left: 100.0, right: 100.0),
+                 //SizedBox(height: 40),
+                 child:ElevatedButton(onPressed: () => {
+                   Navigator.push(
+                     context,
+                     MaterialPageRoute(builder: (context) => HomePage()),
+                   )
+                 },
+                     style: ElevatedButton.styleFrom(
+                       primary: Colors.lightBlue,
+                       shadowColor: Colors.white,
+                       elevation: 5,
+                       shape: RoundedRectangleBorder(
+                           borderRadius: BorderRadius.circular(50)
+                       ),
+                     ),
+                     child: Text('Calculate Rates',
+                         style: TextStyle(
+                             color: Colors.white,
+                             fontSize: 14,
+                             fontWeight: FontWeight.bold
+                         )
+                     )
+                 ),
+               )
+
+             ],
+
+          ),
+          ),
+
+        ],
+        
       ),
     );
   }
 }
+
+
