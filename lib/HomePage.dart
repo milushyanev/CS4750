@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
-
+import 'Results.dart';
+import 'dart:math';
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
@@ -18,12 +19,27 @@ class _HomePageState extends State<HomePage> {
   double hoaTax=0;
   double homeInsurance=0;
   double mortgageInsurance=0;
+  double thirty=360;
+  int fifteen=180;
 
-  loanCalculation(){
-    setState(() {
+  double monthlyA=0;
+  double loanCalc=0;
+  
 
-    });
-  }
+monthlyAff(){
+  setState(() {
+    monthlyA = ((monthlyIncome*47)/100) -expenses;
+  });
+}
+calcLoan(){
+  setState(() {
+double c=interestRate/1200;
+num num1=pow(1+c, 360);
+    loanCalc = (loanAmount-downPayment)*((c*num1)/(num1-1))+hoaTax+((loanAmount*propertyTax)/1200);
+
+  });
+}
+
 
   @override
   Widget build(BuildContext context) {
@@ -243,8 +259,8 @@ class _HomePageState extends State<HomePage> {
                    children: <Widget>[
                      Slider(
                          min:0,
-                         max:1000000,
-                         divisions: 10000,
+                         max:500000,
+                         divisions: 1000,
                          label: downPayment.round().toString(),
                          onChanged: (DownP){
                            setState((
@@ -449,12 +465,15 @@ class _HomePageState extends State<HomePage> {
                Container(
                  margin: const EdgeInsets.only(left: 100.0, right: 100.0),
                  //SizedBox(height: 40),
-                 child:ElevatedButton(onPressed: () => {
-                   Navigator.push(
-                     context,
-                     MaterialPageRoute(builder: (context) => HomePage()),
-                   )
-                 },
+                 child:ElevatedButton(onPressed:
+                     () =>[monthlyAff(), calcLoan()],
+                     //{
+
+//                   Navigator.push(
+//                     context,
+//                     MaterialPageRoute(builder: (context) => Results()),
+//                   )
+                // },
                      style: ElevatedButton.styleFrom(
                        primary: Colors.lightBlue,
                        shadowColor: Colors.white,
@@ -474,6 +493,22 @@ class _HomePageState extends State<HomePage> {
                ),
                Padding(padding: EdgeInsets.all(20)),
 
+               Text('\$ ${double.parse(monthlyA.toStringAsFixed(2))}', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 16,
+                   shadows: [
+                     Shadow(
+                         color: Colors.blue,
+                         offset: Offset(2, 2),
+                         blurRadius: 1),
+                   ]),
+               ),
+               Text('\$ ${double.parse(loanCalc.toStringAsFixed(2))}', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 16,
+                   shadows: [
+                     Shadow(
+                         color: Colors.blue,
+                         offset: Offset(2, 2),
+                         blurRadius: 1),
+                   ]),
+               )
              ],
 
           ),
