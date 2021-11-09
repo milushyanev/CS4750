@@ -10,7 +10,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
-  double loanAmount =100000;
+   double loanAmount =100000;
   double interestRate =2.0;
   double monthlyIncome =1000;
   double expenses = 0;
@@ -39,7 +39,11 @@ num num1=pow(1+c, 360);
 
   });
 }
-
+gotoResults(){
+  Navigator.push(context, MaterialPageRoute(builder: (context){
+    return Results(loanA: loanAmount );
+  },),);
+}
 
   @override
   Widget build(BuildContext context) {
@@ -466,7 +470,9 @@ num num1=pow(1+c, 360);
                  margin: const EdgeInsets.only(left: 100.0, right: 100.0),
                  //SizedBox(height: 40),
                  child:ElevatedButton(onPressed:
-                     () =>[monthlyAff(), calcLoan()],
+                     ()
+                 =>[monthlyAff(), calcLoan(),gotoResults()],
+
                      //{
 
 //                   Navigator.push(
@@ -520,5 +526,4 @@ num num1=pow(1+c, 360);
     );
   }
 }
-
 
