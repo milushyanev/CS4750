@@ -91,8 +91,8 @@ gotoResults(){
                Container(
                  margin: const EdgeInsets.only(left: 30.0, right: 30.0),
                  decoration: BoxDecoration(
-                     border: Border.all(width:1,color: Colors.white),
-                     borderRadius: const BorderRadius.all(const Radius.circular(8)),
+                     //border: Border.all(width:1,color: Colors.white),
+                     borderRadius: const BorderRadius.all(const Radius.circular(20)),
                      color: Colors.white.withOpacity(.3)
                  ),
                  child:Column(
@@ -146,8 +146,8 @@ gotoResults(){
                Container(
                  margin: const EdgeInsets.only(left: 30.0, right: 30.0),
                  decoration: BoxDecoration(
-                     border: Border.all(width:1,color: Colors.white),
-                     borderRadius: const BorderRadius.all(const Radius.circular(8)),
+                    // border: Border.all(width:1,color: Colors.white),
+                     borderRadius: const BorderRadius.all(const Radius.circular(20)),
                      color: Colors.white.withOpacity(.3)
                  ),
                  child:Column(
@@ -201,8 +201,8 @@ gotoResults(){
                  margin: const EdgeInsets.only(left: 30.0, right: 30.0),
                  decoration: BoxDecoration(
 
-                     border: Border.all(width:1,color: Colors.white),
-                     borderRadius: const BorderRadius.all(const Radius.circular(8)),
+                     //border: Border.all(width:1,color: Colors.white),
+                     borderRadius: const BorderRadius.all(const Radius.circular(20)),
                      color: Colors.white.withOpacity(.3)
                  ),
                  child:Column(
@@ -255,8 +255,8 @@ gotoResults(){
                Container(
                  margin: const EdgeInsets.only(left: 30.0, right: 30.0),
                  decoration: BoxDecoration(
-                     border: Border.all(width:1,color: Colors.white),
-                     borderRadius: const BorderRadius.all(const Radius.circular(8)),
+                    // border: Border.all(width:1,color: Colors.white),
+                     borderRadius: const BorderRadius.all(const Radius.circular(20)),
                      color: Colors.white.withOpacity(.3)
                  ),
                  child:Column(
@@ -310,8 +310,8 @@ gotoResults(){
                Container(
                  margin: const EdgeInsets.only(left: 30.0, right: 30.0),
                  decoration: BoxDecoration(
-                     border: Border.all(width:1,color: Colors.white),
-                     borderRadius: const BorderRadius.all(const Radius.circular(8)),
+                    // border: Border.all(width:1,color: Colors.white),
+                     borderRadius: const BorderRadius.all(const Radius.circular(20)),
                      color: Colors.white.withOpacity(.3)
                  ),
                  child:Column(
@@ -363,8 +363,8 @@ gotoResults(){
                Container(
                  margin: const EdgeInsets.only(left: 30.0, right: 30.0),
                  decoration: BoxDecoration(
-                     border: Border.all(width:1,color: Colors.white),
-                     borderRadius: const BorderRadius.all(const Radius.circular(8)),
+                    // border: Border.all(width:1,color: Colors.white),
+                     borderRadius: const BorderRadius.all(const Radius.circular(20)),
                      color: Colors.white.withOpacity(.3)
                  ),
                  child:Column(
@@ -416,8 +416,8 @@ gotoResults(){
                Container(
                  margin: const EdgeInsets.only(left: 30.0, right: 30.0),
                  decoration: BoxDecoration(
-                     border: Border.all(width:1,color: Colors.white),
-                     borderRadius: const BorderRadius.all(const Radius.circular(8)),
+                     //border: Border.all(width:1,color: Colors.white),
+                     borderRadius: const BorderRadius.all(const Radius.circular(20)),
                      color: Colors.white.withOpacity(.3)
                  ),
                  child:Column(

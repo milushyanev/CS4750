@@ -107,7 +107,7 @@ Results({required this.loanA});
                                   color: Colors.white
                                 ),
                               ),
-                              SizedBox(height: 30,),
+                              SizedBox(height: 20,),
                               Text(
                                 "Approved",
                                 style: TextStyle(
@@ -116,7 +116,16 @@ Results({required this.loanA});
 
                                 ),
                               ),
-                              SizedBox(height:25),
+                              SizedBox(height: 20,),
+                              Text(
+                                "Monthly Payment: \$ 2331.23",
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.white,
+
+                                ),
+                              ),
+                              //SizedBox(height:25),
                               Row(
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
@@ -157,6 +166,112 @@ Results({required this.loanA});
                               )
                             ],
                           ),
+                        ),
+                      ),
+                      Container(
+                        height: 180,
+                        width: MediaQuery.of(context).size.width,
+                        child: Stack(
+                          children: [
+                            Container(
+                              width: MediaQuery.of(context).size.width,
+                              margin: const EdgeInsets.only(top:30),
+                              height: 120,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                image: DecorationImage(
+                                  image: AssetImage(
+                                    'assets/images/chart.png',
+                                  ),
+                                    fit:BoxFit.fill
+                                ),
+                                boxShadow: [
+                                  BoxShadow(
+                                    blurRadius: 20,
+                                    offset: Offset(-1,-5),
+                                      color: Colors.blue.withOpacity(.3)
+                                  )
+                                ]
+                              ),
+                            ),
+                            Container(
+                              margin: const EdgeInsets.only(top:40, left: 220),
+
+                              height: 100,
+                              width: 100,
+                              decoration: BoxDecoration(
+                              //color: Colors.redAccent.withOpacity(.2),
+
+                              borderRadius: BorderRadius.circular(20),
+                                  image: DecorationImage(
+                                      image: AssetImage(
+                                        'assets/images/apr.png',
+                                      ),
+                                      fit:BoxFit.fill
+                                  ),
+
+                              ),
+
+                            ),
+                            Container(
+                              padding: const EdgeInsets.only(left: 20,top: 25,right: 20),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+//                                  Text(
+//                                    "Pre-Approval Status:",
+//                                    style: TextStyle(
+//                                        fontSize: 16,
+//                                        color: Colors.white
+//                                    ),
+//                                  ),
+                                  SizedBox(height: 20,),
+                                  Text(
+                                    "Monthly Payment:",
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      color: Colors.white,
+
+                                    ),
+                                  ),
+                                  Padding(padding: const EdgeInsets.only(top: 15)),
+
+                                  Text(
+                                    "Mucho Dinero:",
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      color: Colors.white,
+
+                                    ),
+                                  ),
+                                  SizedBox(height: 25),
+                                 // Padding(padding: const EdgeInsets.only(top: 20)),
+                                  Row(
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Icon(Icons.apartment_rounded,size: 20, color: Colors.white),
+                                          SizedBox(width: 10,),
+                                          Text(
+                                            "15-Year Fixed Rate",
+                                            style: TextStyle(
+                                              fontSize: 14,
+                                              color: Colors.white,
+
+                                            ),
+                                          ),
+                                        ],
+                                      )
+                                    ],
+                                  )
+                                ],
+
+                              ),
+
+                            )
+
+                          ],
                         ),
                       )
                     ],
