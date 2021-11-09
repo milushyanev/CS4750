@@ -218,19 +218,13 @@ Results({required this.loanA});
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-//                                  Text(
-//                                    "Pre-Approval Status:",
-//                                    style: TextStyle(
-//                                        fontSize: 16,
-//                                        color: Colors.white
-//                                    ),
-//                                  ),
                                   SizedBox(height: 20,),
                                   Text(
                                     "Monthly Payment:",
                                     style: TextStyle(
                                       fontSize: 16,
                                       color: Colors.white,
+
 
                                     ),
                                   ),
@@ -241,6 +235,7 @@ Results({required this.loanA});
                                     style: TextStyle(
                                       fontSize: 16,
                                       color: Colors.white,
+                                      fontWeight: FontWeight.bold
 
                                     ),
                                   ),
