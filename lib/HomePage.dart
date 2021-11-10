@@ -83,441 +83,448 @@ gotoResults(){
               ],
             ),
           ),
-          Expanded(
-            child:ListView(
-             children: <Widget>[
-               Padding(padding: EdgeInsets.all(30)),
+          Container(
+            child: Column(
+              children: [
+                Expanded(
+                  child:ListView(
+                    children: <Widget>[
+                      Padding(padding: EdgeInsets.all(30)),
 
-               Container(
-                 margin: const EdgeInsets.only(left: 30.0, right: 30.0),
-                 decoration: BoxDecoration(
-                     //border: Border.all(width:1,color: Colors.white),
-                     borderRadius: const BorderRadius.all(const Radius.circular(20)),
-                     color: Colors.white.withOpacity(.3)
-                 ),
-                 child:Column(
-                   children: <Widget>[
-                     Slider(
-                         min:1000,
-                         max:15000,
-                         divisions: 140,
-                         label: monthlyIncome.round().toString(),
-                         onChanged: (monthlyEarnings){
-                           setState((
-                               )  {
-                             monthlyIncome = monthlyEarnings;
-                           });
-                         },
-                         value: monthlyIncome ),
-                     Container(
-                       margin: const EdgeInsets.only(left: 10.0, right: 10.0),
-                       child: Padding(
-                         padding: const EdgeInsets.all(10.0),
-                         child: Row(
-                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                           children: <Widget>[
+                      Container(
+                        margin: const EdgeInsets.only(left: 30.0, right: 30.0),
+                        decoration: BoxDecoration(
+                          //border: Border.all(width:1,color: Colors.white),
+                            borderRadius: const BorderRadius.all(const Radius.circular(20)),
+                            color: Colors.white.withOpacity(.3)
+                        ),
+                        child:Column(
+                          children: <Widget>[
+                            Slider(
+                                min:1000,
+                                max:15000,
+                                divisions: 140,
+                                label: monthlyIncome.round().toString(),
+                                onChanged: (monthlyEarnings){
+                                  setState((
+                                      )  {
+                                    monthlyIncome = monthlyEarnings;
+                                  });
+                                },
+                                value: monthlyIncome ),
+                            Container(
+                              margin: const EdgeInsets.only(left: 10.0, right: 10.0),
+                              child: Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: <Widget>[
 
-                             Text('Monthly Income', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 18,
-                                 shadows: [
-                                   Shadow(
-                                       color: Colors.blue,
-                                       offset: Offset(1, 2),
-                                       blurRadius: 1),
-                                 ]),
-                             ),
-                             Text('\$ ${double.parse(monthlyIncome.toStringAsFixed(2))}', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 16,
-                                 shadows: [
-                                   Shadow(
-                                       color: Colors.blue,
-                                       offset: Offset(2, 2),
-                                       blurRadius: 1),
-                                 ]),
-                             )
-                           ],
-                         ),
-                       ),
-                     )
-                   ],
+                                    Text('Monthly Income', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 18,
+                                        shadows: [
+                                          Shadow(
+                                              color: Colors.blue,
+                                              offset: Offset(1, 2),
+                                              blurRadius: 1),
+                                        ]),
+                                    ),
+                                    Text('\$ ${double.parse(monthlyIncome.toStringAsFixed(2))}', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 16,
+                                        shadows: [
+                                          Shadow(
+                                              color: Colors.blue,
+                                              offset: Offset(2, 2),
+                                              blurRadius: 1),
+                                        ]),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            )
+                          ],
 
-                 ),
-               ),
-               Padding(padding: EdgeInsets.all(20)),
+                        ),
+                      ),
+                      Padding(padding: EdgeInsets.all(20)),
 
-               Container(
-                 margin: const EdgeInsets.only(left: 30.0, right: 30.0),
-                 decoration: BoxDecoration(
-                    // border: Border.all(width:1,color: Colors.white),
-                     borderRadius: const BorderRadius.all(const Radius.circular(20)),
-                     color: Colors.white.withOpacity(.3)
-                 ),
-                 child:Column(
-                   children: <Widget>[
-                     Slider(
-                         min:0,
-                         max:10000,
-                         divisions: 400,
-                         label: expenses.round().toString(),
-                         onChanged: (monthlyExpenses){
-                           setState((
-                               )  {
-                             expenses = monthlyExpenses;
-                           });
-                         },
-                         value: expenses ),
-                     Container(
-                       margin: const EdgeInsets.only(left: 10.0, right: 10.0),
-                       child: Padding(
-                         padding: const EdgeInsets.all(10.0),
-                         child: Row(
-                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                           children: <Widget>[
+                      Container(
+                        margin: const EdgeInsets.only(left: 30.0, right: 30.0),
+                        decoration: BoxDecoration(
+                          // border: Border.all(width:1,color: Colors.white),
+                            borderRadius: const BorderRadius.all(const Radius.circular(20)),
+                            color: Colors.white.withOpacity(.3)
+                        ),
+                        child:Column(
+                          children: <Widget>[
+                            Slider(
+                                min:0,
+                                max:10000,
+                                divisions: 400,
+                                label: expenses.round().toString(),
+                                onChanged: (monthlyExpenses){
+                                  setState((
+                                      )  {
+                                    expenses = monthlyExpenses;
+                                  });
+                                },
+                                value: expenses ),
+                            Container(
+                              margin: const EdgeInsets.only(left: 10.0, right: 10.0),
+                              child: Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: <Widget>[
 
-                             Text('Monthly Expenses', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 18,
-                                 shadows: [
-                                   Shadow(
-                                       color: Colors.blue,
-                                       offset: Offset(1, 2),
-                                       blurRadius: 1),
-                                 ]),
-                             ),
-                             Text('\$ ${double.parse(expenses.toStringAsFixed(2))}', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 16,
-                                 shadows: [
-                                   Shadow(
-                                       color: Colors.blue,
-                                       offset: Offset(2, 2),
-                                       blurRadius: 1),
-                                 ]),
-                             )
-                           ],
-                         ),
-                       ),
-                     )
-                   ],
+                                    Text('Monthly Expenses', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 18,
+                                        shadows: [
+                                          Shadow(
+                                              color: Colors.blue,
+                                              offset: Offset(1, 2),
+                                              blurRadius: 1),
+                                        ]),
+                                    ),
+                                    Text('\$ ${double.parse(expenses.toStringAsFixed(2))}', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 16,
+                                        shadows: [
+                                          Shadow(
+                                              color: Colors.blue,
+                                              offset: Offset(2, 2),
+                                              blurRadius: 1),
+                                        ]),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            )
+                          ],
 
-                 ),
-               ),
-               Padding(padding: EdgeInsets.all(20)),
-               Container(
-                 margin: const EdgeInsets.only(left: 30.0, right: 30.0),
-                 decoration: BoxDecoration(
+                        ),
+                      ),
+                      Padding(padding: EdgeInsets.all(20)),
+                      Container(
+                        margin: const EdgeInsets.only(left: 30.0, right: 30.0),
+                        decoration: BoxDecoration(
 
-                     //border: Border.all(width:1,color: Colors.white),
-                     borderRadius: const BorderRadius.all(const Radius.circular(20)),
-                     color: Colors.white.withOpacity(.3)
-                 ),
-                 child:Column(
-                   children: <Widget>[
-                     Slider(
-                         min:100000,
-                         max:1000000,
-                         divisions: 180,
-                         label: loanAmount.round().toString(),
-                         onChanged: (housePrice){
-                           setState((
-                               )  {
-                             loanAmount = housePrice;
-                           });
-                         },
-                         value: loanAmount ),
-                     Container(
-                       margin: const EdgeInsets.only(left: 10.0, right: 10.0),
-                       child: Padding(
-                         padding: const EdgeInsets.all(10.0),
-                         child: Row(
-                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                           children: <Widget>[
+                          //border: Border.all(width:1,color: Colors.white),
+                            borderRadius: const BorderRadius.all(const Radius.circular(20)),
+                            color: Colors.white.withOpacity(.3)
+                        ),
+                        child:Column(
+                          children: <Widget>[
+                            Slider(
+                                min:100000,
+                                max:1000000,
+                                divisions: 180,
+                                label: loanAmount.round().toString(),
+                                onChanged: (housePrice){
+                                  setState((
+                                      )  {
+                                    loanAmount = housePrice;
+                                  });
+                                },
+                                value: loanAmount ),
+                            Container(
+                              margin: const EdgeInsets.only(left: 10.0, right: 10.0),
+                              child: Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: <Widget>[
 
-                             Text('Home Value', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 18,
-                                 shadows: [
-                                   Shadow(
-                                       color: Colors.blue,
-                                       offset: Offset(1, 2),
-                                       blurRadius: 1),
-                                 ]),
-                             ),
-                             Text('\$ ${double.parse(loanAmount.toStringAsFixed(2))}', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 16,
-                                 shadows: [
-                                   Shadow(
-                                       color: Colors.blue,
-                                       offset: Offset(2, 2),
-                                       blurRadius: 1),
-                                 ]),
-                             )
-                           ],
-                         ),
-                       ),
-                     )
-                   ],
+                                    Text('Home Value', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 18,
+                                        shadows: [
+                                          Shadow(
+                                              color: Colors.blue,
+                                              offset: Offset(1, 2),
+                                              blurRadius: 1),
+                                        ]),
+                                    ),
+                                    Text('\$ ${double.parse(loanAmount.toStringAsFixed(2))}', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 16,
+                                        shadows: [
+                                          Shadow(
+                                              color: Colors.blue,
+                                              offset: Offset(2, 2),
+                                              blurRadius: 1),
+                                        ]),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            )
+                          ],
 
-                 ),
-               ),
-               Padding(padding: EdgeInsets.all(20)),
-               Container(
-                 margin: const EdgeInsets.only(left: 30.0, right: 30.0),
-                 decoration: BoxDecoration(
-                    // border: Border.all(width:1,color: Colors.white),
-                     borderRadius: const BorderRadius.all(const Radius.circular(20)),
-                     color: Colors.white.withOpacity(.3)
-                 ),
-                 child:Column(
-                   children: <Widget>[
-                     Slider(
-                         min:0,
-                         max:500000,
-                         divisions: 1000,
-                         label: downPayment.round().toString(),
-                         onChanged: (DownP){
-                           setState((
-                               )  {
-                             downPayment = DownP;
-                           });
-                         },
-                         value: downPayment ),
-                     Container(
-                       margin: const EdgeInsets.only(left: 10.0, right: 10.0),
-                       child: Padding(
-                         padding: const EdgeInsets.all(10.0),
-                         child: Row(
-                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                           children: <Widget>[
+                        ),
+                      ),
+                      Padding(padding: EdgeInsets.all(20)),
+                      Container(
+                        margin: const EdgeInsets.only(left: 30.0, right: 30.0),
+                        decoration: BoxDecoration(
+                          // border: Border.all(width:1,color: Colors.white),
+                            borderRadius: const BorderRadius.all(const Radius.circular(20)),
+                            color: Colors.white.withOpacity(.3)
+                        ),
+                        child:Column(
+                          children: <Widget>[
+                            Slider(
+                                min:0,
+                                max:500000,
+                                divisions: 1000,
+                                label: downPayment.round().toString(),
+                                onChanged: (DownP){
+                                  setState((
+                                      )  {
+                                    downPayment = DownP;
+                                  });
+                                },
+                                value: downPayment ),
+                            Container(
+                              margin: const EdgeInsets.only(left: 10.0, right: 10.0),
+                              child: Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: <Widget>[
 
-                             Text('Down Payment', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 18,
-                                 shadows: [
-                                   Shadow(
-                                       color: Colors.blue,
-                                       offset: Offset(1, 2),
-                                       blurRadius: 1),
-                                 ]),
-                             ),
-                             Text('\$ ${double.parse(downPayment.toStringAsFixed(2))}', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 16,
-                                 shadows: [
-                                   Shadow(
-                                       color: Colors.blue,
-                                       offset: Offset(2, 2),
-                                       blurRadius: 1),
-                                 ]),
-                             )
-                           ],
-                         ),
-                       ),
-                     )
-                   ],
+                                    Text('Down Payment', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 18,
+                                        shadows: [
+                                          Shadow(
+                                              color: Colors.blue,
+                                              offset: Offset(1, 2),
+                                              blurRadius: 1),
+                                        ]),
+                                    ),
+                                    Text('\$ ${double.parse(downPayment.toStringAsFixed(2))}', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 16,
+                                        shadows: [
+                                          Shadow(
+                                              color: Colors.blue,
+                                              offset: Offset(2, 2),
+                                              blurRadius: 1),
+                                        ]),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            )
+                          ],
 
-                 ),
-               ),
+                        ),
+                      ),
 
-               Padding(padding: EdgeInsets.all(20)),
-               Container(
-                 margin: const EdgeInsets.only(left: 30.0, right: 30.0),
-                 decoration: BoxDecoration(
-                    // border: Border.all(width:1,color: Colors.white),
-                     borderRadius: const BorderRadius.all(const Radius.circular(20)),
-                     color: Colors.white.withOpacity(.3)
-                 ),
-                 child:Column(
-                   children: <Widget>[
-                     Slider(
-                         min:2,
-                         max:5,
-                         label: interestRate.round().toString(),
-                         onChanged: (loanAPR){
-                           setState((
-                               )  {
-                             interestRate = loanAPR;
-                           });
-                         },
-                         value: interestRate ),
-                     Container(
-                       margin: const EdgeInsets.only(left: 10.0, right: 10.0),
-                       child: Padding(
-                         padding: const EdgeInsets.all(10.0),
-                         child: Row(
-                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                           children: <Widget>[
+                      Padding(padding: EdgeInsets.all(20)),
+                      Container(
+                        margin: const EdgeInsets.only(left: 30.0, right: 30.0),
+                        decoration: BoxDecoration(
+                          // border: Border.all(width:1,color: Colors.white),
+                            borderRadius: const BorderRadius.all(const Radius.circular(20)),
+                            color: Colors.white.withOpacity(.3)
+                        ),
+                        child:Column(
+                          children: <Widget>[
+                            Slider(
+                                min:2,
+                                max:5,
+                                label: interestRate.round().toString(),
+                                onChanged: (loanAPR){
+                                  setState((
+                                      )  {
+                                    interestRate = loanAPR;
+                                  });
+                                },
+                                value: interestRate ),
+                            Container(
+                              margin: const EdgeInsets.only(left: 10.0, right: 10.0),
+                              child: Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: <Widget>[
 
-                             Text('Interest Rate', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 18,
-                                 shadows: [
-                                   Shadow(
-                                       color: Colors.blue,
-                                       offset: Offset(1, 2),
-                                       blurRadius: 1),
-                                 ]),
-                             ),
-                             Text('${double.parse(interestRate.toStringAsFixed(2))} %', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 16,
-                                 shadows: [
-                                   Shadow(
-                                       color: Colors.blue,
-                                       offset: Offset(2, 2),
-                                       blurRadius: 1),
-                                 ]),
-                             )
-                           ],
-                         ),
-                       ),
-                     )
-                   ],
+                                    Text('Interest Rate', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 18,
+                                        shadows: [
+                                          Shadow(
+                                              color: Colors.blue,
+                                              offset: Offset(1, 2),
+                                              blurRadius: 1),
+                                        ]),
+                                    ),
+                                    Text('${double.parse(interestRate.toStringAsFixed(2))} %', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 16,
+                                        shadows: [
+                                          Shadow(
+                                              color: Colors.blue,
+                                              offset: Offset(2, 2),
+                                              blurRadius: 1),
+                                        ]),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            )
+                          ],
 
-                 ),
-               ),
-               Padding(padding: EdgeInsets.all(20)),
-               Container(
-                 margin: const EdgeInsets.only(left: 30.0, right: 30.0),
-                 decoration: BoxDecoration(
-                    // border: Border.all(width:1,color: Colors.white),
-                     borderRadius: const BorderRadius.all(const Radius.circular(20)),
-                     color: Colors.white.withOpacity(.3)
-                 ),
-                 child:Column(
-                   children: <Widget>[
-                     Slider(
-                         min:0.5,
-                         max:5,
-                         label: propertyTax.round().toString(),
-                         onChanged: (pTax){
-                           setState((
-                               )  {
-                             propertyTax = pTax;
-                           });
-                         },
-                         value: propertyTax ),
-                     Container(
-                       margin: const EdgeInsets.only(left: 10.0, right: 10.0),
-                       child: Padding(
-                         padding: const EdgeInsets.all(10.0),
-                         child: Row(
-                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                           children: <Widget>[
+                        ),
+                      ),
+                      Padding(padding: EdgeInsets.all(20)),
+                      Container(
+                        margin: const EdgeInsets.only(left: 30.0, right: 30.0),
+                        decoration: BoxDecoration(
+                          // border: Border.all(width:1,color: Colors.white),
+                            borderRadius: const BorderRadius.all(const Radius.circular(20)),
+                            color: Colors.white.withOpacity(.3)
+                        ),
+                        child:Column(
+                          children: <Widget>[
+                            Slider(
+                                min:0.5,
+                                max:5,
+                                label: propertyTax.round().toString(),
+                                onChanged: (pTax){
+                                  setState((
+                                      )  {
+                                    propertyTax = pTax;
+                                  });
+                                },
+                                value: propertyTax ),
+                            Container(
+                              margin: const EdgeInsets.only(left: 10.0, right: 10.0),
+                              child: Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: <Widget>[
 
-                             Text('Property Tax', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 18,
-                                 shadows: [
-                                   Shadow(
-                                       color: Colors.blue,
-                                       offset: Offset(1, 2),
-                                       blurRadius: 1),
-                                 ]),
-                             ),
-                             Text('${double.parse(propertyTax.toStringAsFixed(2))} %', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 16,
-                                 shadows: [
-                                   Shadow(
-                                       color: Colors.blue,
-                                       offset: Offset(2, 2),
-                                       blurRadius: 1),
-                                 ]),
-                             )
-                           ],
-                         ),
-                       ),
-                     )
-                   ],
+                                    Text('Property Tax', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 18,
+                                        shadows: [
+                                          Shadow(
+                                              color: Colors.blue,
+                                              offset: Offset(1, 2),
+                                              blurRadius: 1),
+                                        ]),
+                                    ),
+                                    Text('${double.parse(propertyTax.toStringAsFixed(2))} %', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 16,
+                                        shadows: [
+                                          Shadow(
+                                              color: Colors.blue,
+                                              offset: Offset(2, 2),
+                                              blurRadius: 1),
+                                        ]),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            )
+                          ],
 
-                 ),
-               ),
-               Padding(padding: EdgeInsets.all(20)),
-               Container(
-                 margin: const EdgeInsets.only(left: 30.0, right: 30.0),
-                 decoration: BoxDecoration(
-                     //border: Border.all(width:1,color: Colors.white),
-                     borderRadius: const BorderRadius.all(const Radius.circular(20)),
-                     color: Colors.white.withOpacity(.3)
-                 ),
-                 child:Column(
-                   children: <Widget>[
-                     Slider(
-                         min:0,
-                         max:3000,
-                         label: hoaTax.round().toString(),
-                         onChanged: (hoaT){
-                           setState((
-                               )  {
-                             hoaTax = hoaT;
-                           });
-                         },
-                         value: hoaTax ),
-                     Container(
-                       margin: const EdgeInsets.only(left: 10.0, right: 10.0),
-                       child: Padding(
-                         padding: const EdgeInsets.all(10.0),
-                         child: Row(
-                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                           children: <Widget>[
+                        ),
+                      ),
+                      Padding(padding: EdgeInsets.all(20)),
+                      Container(
+                        margin: const EdgeInsets.only(left: 30.0, right: 30.0),
+                        decoration: BoxDecoration(
+                          //border: Border.all(width:1,color: Colors.white),
+                            borderRadius: const BorderRadius.all(const Radius.circular(20)),
+                            color: Colors.white.withOpacity(.3)
+                        ),
+                        child:Column(
+                          children: <Widget>[
+                            Slider(
+                                min:0,
+                                max:3000,
+                                label: hoaTax.round().toString(),
+                                onChanged: (hoaT){
+                                  setState((
+                                      )  {
+                                    hoaTax = hoaT;
+                                  });
+                                },
+                                value: hoaTax ),
+                            Container(
+                              margin: const EdgeInsets.only(left: 10.0, right: 10.0),
+                              child: Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: <Widget>[
 
-                             Text('HOA', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 18,
-                                 shadows: [
-                                   Shadow(
-                                       color: Colors.blue,
-                                       offset: Offset(1, 2),
-                                       blurRadius: 1),
-                                 ]),
-                             ),
-                             Text('\$ ${double.parse(hoaTax.toStringAsFixed(2))}', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 16,
-                                 shadows: [
-                                   Shadow(
-                                       color: Colors.blue,
-                                       offset: Offset(2, 2),
-                                       blurRadius: 1),
-                                 ]),
-                             )
-                           ],
-                         ),
-                       ),
-                     )
-                   ],
+                                    Text('HOA', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 18,
+                                        shadows: [
+                                          Shadow(
+                                              color: Colors.blue,
+                                              offset: Offset(1, 2),
+                                              blurRadius: 1),
+                                        ]),
+                                    ),
+                                    Text('\$ ${double.parse(hoaTax.toStringAsFixed(2))}', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 16,
+                                        shadows: [
+                                          Shadow(
+                                              color: Colors.blue,
+                                              offset: Offset(2, 2),
+                                              blurRadius: 1),
+                                        ]),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            )
+                          ],
 
-                 ),
-               ),
-               Padding(padding: EdgeInsets.all(20)),
-               Container(
-                 margin: const EdgeInsets.only(left: 100.0, right: 100.0),
-                 //SizedBox(height: 40),
-                 child:ElevatedButton(onPressed:
-                     ()
-                 =>[monthlyAff(), calcLoan(),gotoResults()],
+                        ),
+                      ),
+                      Padding(padding: EdgeInsets.all(20)),
+                      Container(
+                        margin: const EdgeInsets.only(left: 100.0, right: 100.0),
+                        //SizedBox(height: 40),
+                        child:ElevatedButton(onPressed:
+                            ()
+                        =>[monthlyAff(), calcLoan(),gotoResults()],
 
-                     //{
+                            //{
 
 //                   Navigator.push(
 //                     context,
 //                     MaterialPageRoute(builder: (context) => Results()),
 //                   )
-                // },
-                     style: ElevatedButton.styleFrom(
-                       primary: Colors.lightBlue,
-                       shadowColor: Colors.white,
-                       elevation: 5,
-                       shape: RoundedRectangleBorder(
-                           borderRadius: BorderRadius.circular(50)
-                       ),
-                     ),
-                     child: Text('Calculate Rates',
-                         style: TextStyle(
-                             color: Colors.white,
-                             fontSize: 14,
-                             fontWeight: FontWeight.bold
-                         )
-                     )
-                 ),
-               ),
-               Padding(padding: EdgeInsets.all(20)),
+                            // },
+                            style: ElevatedButton.styleFrom(
+                              primary: Colors.lightBlue,
+                              shadowColor: Colors.white,
+                              elevation: 5,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(50)
+                              ),
+                            ),
+                            child: Text('Calculate Rates',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold
+                                )
+                            )
+                        ),
+                      ),
+                      Padding(padding: EdgeInsets.all(20)),
 
-               Text('\$ ${double.parse(monthlyA.toStringAsFixed(2))}', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 16,
-                   shadows: [
-                     Shadow(
-                         color: Colors.blue,
-                         offset: Offset(2, 2),
-                         blurRadius: 1),
-                   ]),
-               ),
-               Text('\$ ${double.parse(loanCalc.toStringAsFixed(2))}', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 16,
-                   shadows: [
-                     Shadow(
-                         color: Colors.blue,
-                         offset: Offset(2, 2),
-                         blurRadius: 1),
-                   ]),
-               )
-             ],
+                      Text('\$ ${double.parse(monthlyA.toStringAsFixed(2))}', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 16,
+                          shadows: [
+                            Shadow(
+                                color: Colors.blue,
+                                offset: Offset(2, 2),
+                                blurRadius: 1),
+                          ]),
+                      ),
+                      Text('\$ ${double.parse(loanCalc.toStringAsFixed(2))}', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 16,
+                          shadows: [
+                            Shadow(
+                                color: Colors.blue,
+                                offset: Offset(2, 2),
+                                blurRadius: 1),
+                          ]),
+                      )
+                    ],
 
-          ),
+                  ),
+                ),
+
+              ],
+            )
           ),
 
         ],

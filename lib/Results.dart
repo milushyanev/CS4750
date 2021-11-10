@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'HomePage.dart';
 
@@ -7,7 +6,7 @@ import 'HomePage.dart';
 
 class Results extends StatelessWidget {
 
-   double loanA;
+  double loanA;
   double interestRate =2.0;
   double monthlyIncome =1000;
   double expenses = 0;
@@ -19,7 +18,7 @@ class Results extends StatelessWidget {
 
 
 
-Results({required this.loanA});
+  Results({required this.loanA});
   @override
   Widget build(BuildContext context) {
     String $hoaTax;
@@ -72,28 +71,28 @@ Results({required this.loanA});
                         width: MediaQuery.of(context).size.width,
                         height: 200,
                         decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            colors: [
-                              Colors.white.withOpacity(.2),
-                              Colors.white.withOpacity(.3)
-                            ],
-                            begin: Alignment.bottomLeft,
-                            end: Alignment.centerRight
-                          ),
-                          //  color: Colors.white.withOpacity(.3),
+                            gradient: LinearGradient(
+                                colors: [
+                                  Colors.white.withOpacity(.2),
+                                  Colors.white.withOpacity(.3)
+                                ],
+                                begin: Alignment.bottomLeft,
+                                end: Alignment.centerRight
+                            ),
+                            //  color: Colors.white.withOpacity(.3),
                             borderRadius: BorderRadius.only(
                                 topLeft: Radius.circular(10),
                                 topRight: Radius.circular(80),
                                 bottomLeft: Radius.circular(10),
                                 bottomRight: Radius.circular(10)
                             ),
-                          boxShadow: [
-                            BoxShadow(
-                              offset: Offset(5,5),
-                              blurRadius: 20,
-                              color: Colors.black.withOpacity(.2)
-                            )
-                          ]
+                            boxShadow: [
+                              BoxShadow(
+                                  offset: Offset(5,5),
+                                  blurRadius: 20,
+                                  color: Colors.black.withOpacity(.2)
+                              )
+                            ]
                         ),
                         child: Container(
                           padding: const EdgeInsets.only(left: 20,top: 25,right: 20),
@@ -103,16 +102,16 @@ Results({required this.loanA});
                               Text(
                                 "Pre-Approval Status:",
                                 style: TextStyle(
-                                  fontSize: 16,
-                                  color: Colors.white
+                                    fontSize: 16,
+                                    color: Colors.white
                                 ),
                               ),
-                              SizedBox(height: 20,),
+                              SizedBox(height: 10,),
                               Text(
                                 "Approved",
                                 style: TextStyle(
-                                    fontSize: 25,
-                                    color: Colors.white,
+                                  fontSize: 25,
+                                  color: Colors.white,
 
                                 ),
                               ),
@@ -122,10 +121,9 @@ Results({required this.loanA});
                                 style: TextStyle(
                                   fontSize: 16,
                                   color: Colors.white,
-
                                 ),
                               ),
-                              //SizedBox(height:25),
+                              SizedBox(height:10),
                               Row(
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
@@ -141,33 +139,36 @@ Results({required this.loanA});
 
                                         ),
                                       ),
-
                                     ],
                                   ),
                                   Expanded(child: Container()),
                                   Container(
                                     decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(60),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.blue.withOpacity(.6),
-                                          blurRadius: 10,
-                                          offset: Offset(4,4)
-                                        )
-                                      ]
+                                        borderRadius: BorderRadius.circular(60),
+                                        boxShadow: [
+                                          BoxShadow(
+                                              color: Colors.blue.withOpacity(.6),
+                                              blurRadius: 10,
+                                              offset: Offset(4,4)
+                                          )
+                                        ]
                                     ),
                                     child: Icon(
                                       Icons.info,
                                       color: Colors.white,
                                       size: 60,
                                     ),
-                                  )
+                                  ),
+
+
                                 ],
                               )
                             ],
                           ),
                         ),
-                      ),
+
+                  ),
+
                       Container(
                         height: 180,
                         width: MediaQuery.of(context).size.width,
@@ -178,40 +179,35 @@ Results({required this.loanA});
                               margin: const EdgeInsets.only(top:30),
                               height: 120,
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
-                                image: DecorationImage(
-                                  image: AssetImage(
-                                    'assets/images/chart.png',
+                                  borderRadius: BorderRadius.circular(20),
+                                  image: DecorationImage(
+                                      image: AssetImage(
+                                        'assets/images/chart.png',
+                                      ),
+                                      fit:BoxFit.fill
                                   ),
-                                    fit:BoxFit.fill
-                                ),
-                                boxShadow: [
-                                  BoxShadow(
-                                    blurRadius: 20,
-                                    offset: Offset(-1,-5),
-                                      color: Colors.blue.withOpacity(.3)
-                                  )
-                                ]
+                                  boxShadow: [
+                                    BoxShadow(
+                                        blurRadius: 20,
+                                        offset: Offset(-1,-5),
+                                        color: Colors.blue.withOpacity(.3)
+                                    )
+                                  ]
                               ),
                             ),
                             Container(
                               margin: const EdgeInsets.only(top:40, left: 220),
-
                               height: 100,
                               width: 100,
                               decoration: BoxDecoration(
-                              //color: Colors.redAccent.withOpacity(.2),
-
-                              borderRadius: BorderRadius.circular(20),
-                                  image: DecorationImage(
-                                      image: AssetImage(
-                                        'assets/images/apr.png',
-                                      ),
-                                      fit:BoxFit.fill
-                                  ),
-
+                                borderRadius: BorderRadius.circular(20),
+                                image: DecorationImage(
+                                    image: AssetImage(
+                                      'assets/images/apr.png',
+                                    ),
+                                    fit:BoxFit.fill
+                                ),
                               ),
-
                             ),
                             Container(
                               padding: const EdgeInsets.only(left: 20,top: 25,right: 20),
@@ -224,23 +220,18 @@ Results({required this.loanA});
                                     style: TextStyle(
                                       fontSize: 16,
                                       color: Colors.white,
-
-
                                     ),
                                   ),
                                   Padding(padding: const EdgeInsets.only(top: 15)),
-
                                   Text(
-                                    "Mucho Dinero:",
+                                    "Mucho Dine ro:",
                                     style: TextStyle(
-                                      fontSize: 16,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold
-
+                                        fontSize: 16,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold
                                     ),
                                   ),
                                   SizedBox(height: 25),
-                                 // Padding(padding: const EdgeInsets.only(top: 20)),
                                   Row(
                                     crossAxisAlignment: CrossAxisAlignment.end,
                                     children: [
@@ -253,7 +244,6 @@ Results({required this.loanA});
                                             style: TextStyle(
                                               fontSize: 14,
                                               color: Colors.white,
-
                                             ),
                                           ),
                                         ],
@@ -261,17 +251,64 @@ Results({required this.loanA});
                                     ],
                                   )
                                 ],
-
                               ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        height: 270,
+                        width: MediaQuery.of(context).size.width,
+                        child: Stack(
+                          children: [
+                                                        Expanded(
+                                child: ListView.builder(
+                                    itemCount: 4,
+                                    itemBuilder: (_, i){
+                                      return Row(
+                                        children: [
+                                          Container(
+                                            width: 200,
+                                            height: 170,
+                                            padding: EdgeInsets.only(bottom:  5),
+                                            decoration: BoxDecoration(
+                                                borderRadius: BorderRadius.circular(15),
+                                                //color: Colors.white
+                                     image: DecorationImage(
+                                          image: AssetImage(
+                                              "assets/images/apr.png"
+                                          )
+                                      ),
+                                              boxShadow: [
+                                              BoxShadow(
+                                                blurRadius: 3,
+                                                offset: Offset(5,5),
+                                                color:
+                                                  //Colors.white.withOpacity(.2),
+                                                  Colors.white.withOpacity(.25)
 
+
+                                              )
+                                              ]
+                                            ),
+
+
+                                          )
+                                        ],
+                                      );
+                                    }
+                                )
                             )
+
 
                           ],
                         ),
-                      )
+                      ),
+
                     ],
                   ),
-                )
+                ),
+
               ],
 
             ),
@@ -283,3 +320,4 @@ Results({required this.loanA});
     );
   }
 }
+
