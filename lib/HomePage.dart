@@ -10,7 +10,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
-   double loanAmount =100000;
+  double loanAmount =100000;
   double interestRate =2.0;
   double monthlyIncome =1000;
   double expenses = 0;
@@ -19,32 +19,126 @@ class _HomePageState extends State<HomePage> {
   double hoaTax=0;
   double homeInsurance=0;
   double mortgageInsurance=0;
-  double thirty=360;
-  int fifteen=180;
+  double down20=0;
 
   double monthlyA=0;
   double loanCalc=0;
-  
+  double loanCalc15=0;
+  double pmiCalc =0;
+  double pmiLow=0;
+  double pmiHigh=0;
+  double stopRate=0;
+  double borrAmount=0;
+  int pmiStopMonths=0;
+  double totalLoanAmount=0;
+  double totalLoanAmount1=0;
+  double remLoan=0;
+  String approval="";
+  double bestC=0;
+  double bestCdown=0;
 
+
+borrowAmount(){
+  setState(() {
+    down20=loanAmount* (.2);
+    borrAmount=loanAmount-downPayment;
+    if(borrAmount<0){
+      borrAmount=0;
+    }
+  });
+}
+bestCase(){
+  setState(() {
+    double checkLoan=100000;
+    double mIncome=monthlyIncome*(0.47);
+    double appAmount=0;
+    while(appAmount<mIncome){
+      double c=interestRate/1200;
+      num num1=pow(1+c, 360);
+      double loanCalc = (checkLoan-(checkLoan*.2))*((c*num1)/(num1-1));
+      appAmount=loanCalc+hoaTax+((checkLoan*propertyTax)/1200);
+      checkLoan=checkLoan+5000;
+    }
+    bestC=checkLoan;
+    bestCdown=bestC*(.2);
+
+  });
+}
 monthlyAff(){
   setState(() {
-    monthlyA = ((monthlyIncome*47)/100) -expenses;
+    monthlyA = ((monthlyIncome*47)/100) - expenses;
+    if(monthlyA<0){
+      monthlyA=0;
+    }
   });
 }
+
 calcLoan(){
   setState(() {
-double c=interestRate/1200;
-num num1=pow(1+c, 360);
-    loanCalc = (loanAmount-downPayment)*((c*num1)/(num1-1))+hoaTax+((loanAmount*propertyTax)/1200);
+    double c=interestRate/1200;
+    num num1=pow(1+c, 360);
+    num num2=pow(1+c,180);
+    loanCalc = (borrAmount)*((c*num1)/(num1-1));
+    loanCalc15 = (borrAmount)*((c*num2)/(num2-1));
+
+  });
+
+}
+approvalMessage(){
+  setState(() {
+    if(totalLoanAmount<=monthlyA){
+      approval="Approved";
+    }
+    else{
+      approval="Denied";
+    }
+  });
+}
+
+calcTotalLoan(){
+  setState(() {
+    if(downPayment >= (loanAmount*(.2)) && downPayment<loanAmount){
+      totalLoanAmount=loanCalc+hoaTax+((loanAmount*propertyTax)/1200);
+      totalLoanAmount1=loanCalc15+hoaTax+((loanAmount*propertyTax)/1200);
+    }else if(downPayment < (loanAmount*(.2))){
+      totalLoanAmount=loanCalc+hoaTax+((loanAmount*propertyTax)/1200)+pmiCalc;
+      totalLoanAmount1=loanCalc15+hoaTax+((loanAmount*propertyTax)/1200)+pmiCalc;
+    }else if(downPayment>loanAmount){
+      totalLoanAmount=hoaTax+((loanAmount*propertyTax)/1200);
+      totalLoanAmount1=hoaTax+((loanAmount*propertyTax)/1200);
+    }
 
   });
 }
-gotoResults(){
-  Navigator.push(context, MaterialPageRoute(builder: (context){
-    return Results(loanA: loanAmount );
-  },),);
+
+calcPMI(){
+  setState(() {
+    pmiCalc=loanAmount*(0.01235)/12;
+    pmiLow=loanAmount*(0.0025)/12;
+    pmiHigh=loanAmount*(0.0225)/12;
+  });
+}
+calcLVR(){
+  setState(() {
+    stopRate=loanAmount*(0.8);
+    remLoan=loanAmount-downPayment;
+    int count=0;
+    while(remLoan>stopRate){
+      double monInt=(interestRate/1200)*remLoan;
+      double monPrin=loanCalc-monInt;
+      remLoan=remLoan-monPrin;
+      count=count+1;
+    }
+    pmiStopMonths=count;
+
+  });
 }
 
+  gotoResults(){
+    Navigator.push(context, MaterialPageRoute(builder: (context){
+      return Results(loanA: loanAmount,pmiLow: pmiLow,pmiMed: pmiCalc,pmiHigh: pmiHigh,pmiStop: pmiStopMonths,loan15: totalLoanAmount1,loan30: totalLoanAmount, down20: down20, approval: approval,bestC: bestC, bestCdown: bestCdown,);
+    },),);
+  }
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -474,7 +568,7 @@ gotoResults(){
                         //SizedBox(height: 40),
                         child:ElevatedButton(onPressed:
                             ()
-                        =>[monthlyAff(), calcLoan(),gotoResults()],
+                        =>[monthlyAff(),borrowAmount(), calcLoan(), calcPMI(), calcLVR(),calcTotalLoan(),approvalMessage(),bestCase(),gotoResults()],
 
                             //{
 
@@ -500,24 +594,6 @@ gotoResults(){
                             )
                         ),
                       ),
-                      Padding(padding: EdgeInsets.all(20)),
-
-                      Text('\$ ${double.parse(monthlyA.toStringAsFixed(2))}', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 16,
-                          shadows: [
-                            Shadow(
-                                color: Colors.blue,
-                                offset: Offset(2, 2),
-                                blurRadius: 1),
-                          ]),
-                      ),
-                      Text('\$ ${double.parse(loanCalc.toStringAsFixed(2))}', style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 16,
-                          shadows: [
-                            Shadow(
-                                color: Colors.blue,
-                                offset: Offset(2, 2),
-                                blurRadius: 1),
-                          ]),
-                      )
                     ],
 
                   ),

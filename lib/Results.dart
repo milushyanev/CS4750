@@ -7,18 +7,25 @@ import 'HomePage.dart';
 class Results extends StatelessWidget {
 
   double loanA;
-  double interestRate =2.0;
-  double monthlyIncome =1000;
-  double expenses = 0;
-  double downPayment=0;
-  double propertyTax=0.5;
-  //double hoaTax=0;
+  double pmiLow;
+  double pmiMed;
+  double pmiHigh;
+  int pmiStop;
+  double loan15;
+  double loan30;
+  double down20;
+  String approval;
+  double bestC;
+  double bestCdown;
+
   double homeInsurance=0;
   double mortgageInsurance=0;
 
 
+  Results({required this.loanA, required this.pmiLow,required this.pmiMed,required this.pmiHigh,required this.pmiStop,required this.loan15,
+    required this.loan30, required this.down20, required this.approval, required this.bestC, required this.bestCdown});
 
-  Results({required this.loanA});
+
   @override
   Widget build(BuildContext context) {
     String $hoaTax;
@@ -79,7 +86,6 @@ class Results extends StatelessWidget {
                                 begin: Alignment.bottomLeft,
                                 end: Alignment.centerRight
                             ),
-                            //  color: Colors.white.withOpacity(.3),
                             borderRadius: BorderRadius.only(
                                 topLeft: Radius.circular(10),
                                 topRight: Radius.circular(80),
@@ -108,7 +114,7 @@ class Results extends StatelessWidget {
                               ),
                               SizedBox(height: 10,),
                               Text(
-                                "Approved",
+                                '$approval',
                                 style: TextStyle(
                                   fontSize: 25,
                                   color: Colors.white,
@@ -117,7 +123,7 @@ class Results extends StatelessWidget {
                               ),
                               SizedBox(height: 20,),
                               Text(
-                                "Monthly Payment: \$ 2331.23",
+                                "Monthly Payment: \$ ${double.parse(loan30.toStringAsFixed(2))}",
                                 style: TextStyle(
                                   fontSize: 16,
                                   color: Colors.white,
@@ -159,16 +165,12 @@ class Results extends StatelessWidget {
                                       size: 60,
                                     ),
                                   ),
-
-
                                 ],
                               )
                             ],
                           ),
                         ),
-
                   ),
-
                       Container(
                         height: 180,
                         width: MediaQuery.of(context).size.width,
@@ -224,7 +226,7 @@ class Results extends StatelessWidget {
                                   ),
                                   Padding(padding: const EdgeInsets.only(top: 15)),
                                   Text(
-                                    "Mucho Dine ro:",
+                                    '\$ ${double.parse(loan15.toStringAsFixed(2))}',
                                     style: TextStyle(
                                         fontSize: 16,
                                         color: Colors.white,
@@ -257,53 +259,316 @@ class Results extends StatelessWidget {
                         ),
                       ),
                       Container(
-                        height: 270,
+                        height: 180,
                         width: MediaQuery.of(context).size.width,
                         child: Stack(
                           children: [
-                                                        Expanded(
-                                child: ListView.builder(
-                                    itemCount: 4,
-                                    itemBuilder: (_, i){
-                                      return Row(
-                                        children: [
-                                          Container(
-                                            width: 200,
-                                            height: 170,
-                                            padding: EdgeInsets.only(bottom:  5),
-                                            decoration: BoxDecoration(
-                                                borderRadius: BorderRadius.circular(15),
-                                                //color: Colors.white
-                                     image: DecorationImage(
-                                          image: AssetImage(
-                                              "assets/images/apr.png"
-                                          )
+                            Container(
+                              width: MediaQuery.of(context).size.width,
+                              margin: const EdgeInsets.only(top:30),
+                              height: 120,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20),
+                                  image: DecorationImage(
+                                      image: AssetImage(
+                                        'assets/images/chart.png',
                                       ),
-                                              boxShadow: [
-                                              BoxShadow(
-                                                blurRadius: 3,
-                                                offset: Offset(5,5),
-                                                color:
-                                                  //Colors.white.withOpacity(.2),
-                                                  Colors.white.withOpacity(.25)
-
-
-                                              )
-                                              ]
+                                      fit:BoxFit.fill
+                                  ),
+                                  boxShadow: [
+                                    BoxShadow(
+                                        blurRadius: 20,
+                                        offset: Offset(-1,-5),
+                                        color: Colors.blue.withOpacity(.3)
+                                    )
+                                  ]
+                              ),
+                            ),
+                            Container(
+                              margin: const EdgeInsets.only(top:13, left: 220),
+                              height: 150,
+                              width: 150,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                image: DecorationImage(
+                                    image: AssetImage(
+                                      'assets/images/pmi.png',
+                                    ),
+                                    fit:BoxFit.fill
+                                ),
+                              ),
+                            ),
+                            Container(
+                              padding: const EdgeInsets.only(left: 20,top: 25,right: 20),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  SizedBox(height: 20,),
+                                  Text(
+                                    "PMI:",
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  Padding(padding: const EdgeInsets.only(top: 10)),
+                                  Text(
+                                    '\$ ${double.parse(pmiMed.toStringAsFixed(2))}',
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold
+                                    ),
+                                  ),
+                                  Padding(padding: const EdgeInsets.only(top: 10)),
+                                  Text(
+                                    "Low: \$ ${double.parse(pmiLow.toStringAsFixed(2))}  High: \$ ${double.parse(pmiHigh.toStringAsFixed(2))}",
+                                    style: TextStyle(
+                                        fontSize: 14,
+                                        color: Colors.white,
+                                        //fontWeight: FontWeight.bold
+                                    ),
+                                  ),
+                                  SizedBox(height: 5),
+                                  Row(
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Icon(Icons.analytics_rounded,size: 20, color: Colors.white),
+                                          SizedBox(width: 10,),
+                                          Text(
+                                            "Private Mortgage Insurance",
+                                            style: TextStyle(
+                                              fontSize: 14,
+                                              color: Colors.white,
                                             ),
-
-
-                                          )
+                                          ),
                                         ],
-                                      );
-                                    }
-                                )
-                            )
+                                      )
+                                    ],
+                                  )
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        height: 180,
+                        width: MediaQuery.of(context).size.width,
+                        child: Stack(
+                          children: [
+                            Container(
+                              width: MediaQuery.of(context).size.width,
+                              margin: const EdgeInsets.only(top:30),
+                              height: 120,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20),
+                                  image: DecorationImage(
+                                      image: AssetImage(
+                                        'assets/images/chart.png',
+                                      ),
+                                      fit:BoxFit.fill
+                                  ),
+                                  boxShadow: [
+                                    BoxShadow(
+                                        blurRadius: 20,
+                                        offset: Offset(-1,-5),
+                                        color: Colors.blue.withOpacity(.3)
+                                    )
+                                  ]
+                              ),
+                            ),
+                            Container(
+                              margin: const EdgeInsets.only(top:40, left: 220),
+                              height: 100,
+                              width: 100,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                image: DecorationImage(
+                                    image: AssetImage(
+                                      'assets/images/lvr.png',
+                                    ),
+                                    fit:BoxFit.fill
+                                ),
+                              ),
+                            ),
+                            Container(
+                              padding: const EdgeInsets.only(left: 20,top: 25,right: 20),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  SizedBox(height: 20,),
+                                  Text(
+                                    "LVR:",
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  Padding(padding: const EdgeInsets.only(top: 10)),
+                                  Text(
+                                    "$pmiStop Payments",
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold
+                                    ),
+                                  ),
+                                  Padding(padding: const EdgeInsets.only(top: 5)),
+                                  Text(
+                                    "until PMI is dropped",
+                                    style: TextStyle(
+                                        fontSize: 14,
+                                        color: Colors.white,
+                                        //fontWeight: FontWeight.bold
+                                    ),
+                                  ),
+                                  SizedBox(height: 10),
+                                  Row(
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Icon(Icons.account_balance_rounded,size: 20, color: Colors.white),
+                                          SizedBox(width: 10,),
+                                          Text(
+                                            "Loan to Value Ratio",
+                                            style: TextStyle(
+                                              fontSize: 14,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        ],
+                                      )
+                                    ],
+                                  )
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        height: 300,
+                        width: MediaQuery.of(context).size.width,
+                        child: Stack(
+                          children: [
+                            Container(
+                              width: MediaQuery.of(context).size.width,
+                              margin: const EdgeInsets.only(top:30),
+                              height: 200,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20),
+                                  image: DecorationImage(
+                                      image: AssetImage(
+                                        'assets/images/chart.png',
+                                      ),
+                                      fit:BoxFit.fill
+                                  ),
+                                  boxShadow: [
+                                    BoxShadow(
+                                        blurRadius: 20,
+                                        offset: Offset(-1,-5),
+                                        color: Colors.blue.withOpacity(.3)
+                                    )
+                                  ]
+                              ),
+                            ),
+                            Container(
+                              margin: const EdgeInsets.only(top:125, left: 220),
+                              height: 100,
+                              width: 100,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                image: DecorationImage(
+                                    image: AssetImage(
+                                      'assets/images/bestC.png',
+                                    ),
+                                    fit:BoxFit.fill
+                                ),
+                              ),
+                            ),
+                            Container(
+                              padding: const EdgeInsets.only(left: 20,top: 25,right: 20),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  SizedBox(height: 20,),
+                                  Text(
+                                    "Best Case Scenario:",
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  Padding(padding: const EdgeInsets.only(top: 10)),
+                                  Text(
+                                    '\$ ${double.parse(bestC.toStringAsFixed(2))}',
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold
+                                    ),
+                                  ),
+                                  Padding(padding: const EdgeInsets.only(top: 15)),
+                                  Text(
+                                    "Down Payment (20%): \$ ${double.parse(bestCdown.toStringAsFixed(2))}",
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.white,
+                                      //fontWeight: FontWeight.bold
+                                    ),
+                                  ),
+                                  Padding(padding: const EdgeInsets.only(top: 5)),
+                                  Text(
+                                    "When PMI: \$0",
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.white,
+                                      //fontWeight: FontWeight.bold
+                                    ),
+                                  ),
+                                  Padding(padding: const EdgeInsets.only(top: 5)),
+                                  Text(
+                                    "If Expenses: \$0",
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.white,
+                                      //fontWeight: FontWeight.bold
+                                    ),
+                                  ),
 
+                                  SizedBox(height: 30),
+                                  Row(
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Icon(Icons.pending_actions,size: 20, color: Colors.white),
+                                          SizedBox(width: 10,),
+                                          Text(
+                                            "Biggest Loan Amount",
+                                            style: TextStyle(
+                                              fontSize: 14,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        ],
+                                      )
+                                    ],
+                                  )
+                                ],
+                              ),
+                            ),
 
                           ],
                         ),
                       ),
+
+
+
 
                     ],
                   ),
@@ -319,5 +584,6 @@ class Results extends StatelessWidget {
       ),
     );
   }
+
 }
 
