@@ -120,23 +120,29 @@ calcPMI(){
 }
 calcLVR(){
   setState(() {
-    stopRate=loanAmount*(0.8);
+    stopRate=loanAmount*(0.75);
     remLoan=loanAmount-downPayment;
     int count=0;
-    while(remLoan>stopRate){
-      double monInt=(interestRate/1200)*remLoan;
-      double monPrin=loanCalc-monInt;
-      remLoan=remLoan-monPrin;
-      count=count+1;
+    if(downPayment>=(loanAmount*(0.2))){
+      pmiStopMonths=count;
     }
-    pmiStopMonths=count;
+    else {
+      while(remLoan>stopRate){
+        double monInt=(interestRate/1200)*remLoan;
+        double monPrin=loanCalc-monInt;
+        remLoan=remLoan-monPrin;
+        count=count+1;
+      }
+      pmiStopMonths=count;
+    }
+
 
   });
 }
 
   gotoResults(){
     Navigator.push(context, MaterialPageRoute(builder: (context){
-      return Results(loanA: loanAmount,pmiLow: pmiLow,pmiMed: pmiCalc,pmiHigh: pmiHigh,pmiStop: pmiStopMonths,loan15: totalLoanAmount1,loan30: totalLoanAmount, down20: down20, approval: approval,bestC: bestC, bestCdown: bestCdown,);
+      return Results(loanA: loanAmount,pmiLow: pmiLow,pmiMed: pmiCalc,pmiHigh: pmiHigh,pmiStop: pmiStopMonths,loan15: totalLoanAmount1,loan30: totalLoanAmount, down20: down20, approval: approval,bestC: bestC, bestCdown: bestCdown, downP: downPayment,);
     },),);
   }
   @override

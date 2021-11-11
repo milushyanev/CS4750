@@ -17,13 +17,15 @@ class Results extends StatelessWidget {
   String approval;
   double bestC;
   double bestCdown;
+  double downP;
+
 
   double homeInsurance=0;
   double mortgageInsurance=0;
 
 
   Results({required this.loanA, required this.pmiLow,required this.pmiMed,required this.pmiHigh,required this.pmiStop,required this.loan15,
-    required this.loan30, required this.down20, required this.approval, required this.bestC, required this.bestCdown});
+    required this.loan30, required this.down20, required this.approval, required this.bestC, required this.bestCdown, required this.downP});
 
 
   @override
@@ -69,14 +71,13 @@ class Results extends StatelessWidget {
             child:ListView(
               children: <Widget>[
                 //Padding(padding: EdgeInsets.all(30)),
-                //Text('$loanA'),
                 Container(
                   padding: const EdgeInsets.only(top: 50, left: 30, right: 30),
                   child: Column(
                     children: [
                       Container(
                         width: MediaQuery.of(context).size.width,
-                        height: 200,
+                        height: 250,
                         decoration: BoxDecoration(
                             gradient: LinearGradient(
                                 colors: [
@@ -117,11 +118,28 @@ class Results extends StatelessWidget {
                                 '$approval',
                                 style: TextStyle(
                                   fontSize: 25,
-                                  color: Colors.white,
+                                  color: Colors.blueAccent,
+                                  fontWeight: FontWeight.bold
 
                                 ),
                               ),
                               SizedBox(height: 20,),
+                              Text(
+                                "Loan Amount: \$ ${double.parse(loanA.toStringAsFixed(2))}",
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              SizedBox(height: 10,),
+                              Text(
+                                "Down Payment: \$ ${double.parse(downP.toStringAsFixed(2))}",
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              SizedBox(height: 10,),
                               Text(
                                 "Monthly Payment: \$ ${double.parse(loan30.toStringAsFixed(2))}",
                                 style: TextStyle(
@@ -129,7 +147,7 @@ class Results extends StatelessWidget {
                                   color: Colors.white,
                                 ),
                               ),
-                              SizedBox(height:10),
+//                              SizedBox(height:10),
                               Row(
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
