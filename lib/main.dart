@@ -5,6 +5,6 @@ import 'welcomePage.dart';
 void main(){
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: SplashPage(duration: 3, goToPage: WelcomePage()),
+    home: SplashPage(duration: 4, goToPage: WelcomePage()),
   ));
 }
